@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectHub - Meet New People</title>
+    <link rel="stylesheet" href="meetup.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">ConnectHub</div>
+            <div class="nav-links">
+                <a href="#" onclick="showHome()" class="nav-item">Home</a>
+                <a href="#" onclick="showProfiles()" class="nav-item">Browse</a>
+                <a href="#" onclick="showMyProfile()" class="nav-item" id="myProfileNav" style="display:none;">My Profile</a>
+                <a href="#" onclick="showMatches()" class="nav-item" id="matchesNav" style="display:none;">Matches</a>
+                <a href="#" onclick="showMessages()" class="nav-item" id="messagesNav" style="display:none;">Messages</a>
+                <a href="#" onclick="logout()" class="nav-item" id="logoutBtn" style="display:none;">Logout</a>
+                <a href="#" onclick="showSignup()" class="nav-item" id="signupBtn">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Home Section -->
+        <section id="homeSection" class="section active">
+            <div class="hero">
+                <h1>Welcome to ConnectHub</h1>
+                <p>Meet amazing people and make meaningful connections</p>
+                <button class="btn btn-primary" onclick="showSignup()">Get Started</button>
+                <button class="btn btn-secondary" onclick="showProfiles()">Browse Profiles</button>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🎯 Find Your Match</h3>
+                    <p>Discover people with similar interests and hobbies</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💬 Connect & Chat</h3>
+                    <p>Message people you're interested in</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🌟 Build Community</h3>
+                    <p>Make genuine connections and friendships</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sign Up Section -->
+        <section id="signupSection" class="section">
+            <div class="form-container">
+                <h2>Create Your Profile</h2>
+                <form id="signupForm" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" min="18" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" placeholder="City, Country" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="interests">Interests (comma-separated)</label>
+                        <input type="text" id="interests" name="interests" placeholder="e.g., Travel, Hiking, Gaming" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Profile Photo URL</label>
+                        <input type="url" id="photo" name="photo" placeholder="https://example.com/photo.jpg" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Profile</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Browse Profiles Section -->
+        <section id="profilesSection" class="section">
+            <h2>Browse Profiles</h2>
+            <div class="filter-section">
+                <input type="text" id="filterInterests" placeholder="Filter by interests..." class="filter-input">
+                <button onclick="applyFilters()" class="btn btn-secondary">Filter</button>
+            </div>
+            <div id="profilesContainer" class="profiles-grid">
+                <!-- Profiles loaded here -->
+            </div>
+        </section>
+
+        <!-- My Profile Section -->
+        <section id="myProfileSection" class="section">
+            <div id="myProfileContent" class="profile-detail">
+                <!-- User's profile displayed here -->
+            </div>
+        </section>
+
+        <!-- Matches Section -->
+        <section id="matchesSection" class="section">
+            <h2>Your Matches</h2>
+            <div id="matchesContainer" class="matches-grid">
+                <!-- Matches displayed here -->
+            </div>
+        </section>
+
+        <!-- Messages Section -->
+        <section id="messagesSection" class="section">
+            <h2>Messages</h2>
+            <div class="messages-layout">
+                <div id="conversationsList" class="conversations-list">
+                    <!-- Conversations listed here -->
+                </div>
+                <div id="chatBox" class="chat-box" style="display:none;">
+                    <div id="chatMessages" class="chat-messages"></div>
+                    <div class="chat-input-group">
+                        <input type="text" id="messageInput" placeholder="Type a message..." class="chat-input">
+                        <button onclick="sendMessage()" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="meetup.js"></script>
+</body>
+</html>

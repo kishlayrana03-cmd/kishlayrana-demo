@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "ConnectHub",
+    "slug": "connecthub",
+    "version": "1.0.0",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTabletMode": true,
+      "bundleIdentifier": "com.connecthub.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#667eea"
+      },
+      "package": "com.connecthub.app",
+      "permissions": ["INTERNET", "ACCESS_FINE_LOCATION", "CAMERA"]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      ["@react-native-async-storage/async-storage", {}]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "connecthub-project"
+      }
+    }
+  }
+}
